@@ -4,11 +4,27 @@ interface InputProps {
   value: string | number;
   setValue: Function;
   placeholder?: string;
+  label?: string;
+  important?: boolean;
+  className?: string;
 }
 
-const Input: FC<InputProps> = ({ value = "", setValue, placeholder = "" }) => {
+const Input: FC<InputProps> = ({
+  value = "",
+  setValue,
+  placeholder = "",
+  important = false,
+  label = null,
+  className = "",
+}) => {
   return (
-    <div>
+    <div className={`flex flex-col gap-2 ${className}`}>
+      {label && (
+        <p className="flex items-center">
+          {label.toUpperCase()}
+          {important && "*"}
+        </p>
+      )}
       <input
         value={value}
         onChange={(e) => {
