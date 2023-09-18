@@ -4,6 +4,7 @@ import { lazy } from "react";
 const Home = lazy(() => import("./pages/Home"));
 const Signup = lazy(() => import("./pages/Signup"));
 const Login = lazy(() => import("./pages/Login"));
+const Profile = lazy(() => import("./pages/Profile"));
 
 interface Route {
   exact: boolean;
@@ -11,12 +12,7 @@ interface Route {
   element: React.FunctionComponent;
 }
 
-const Routes: Array<Route> = [
-  {
-    path: "/",
-    exact: true,
-    element: Home,
-  },
+export const AuthRoutes: Array<Route> = [
   {
     path: "/auth/signup",
     exact: true,
@@ -29,4 +25,15 @@ const Routes: Array<Route> = [
   },
 ];
 
-export default Routes;
+export const AppRoutes: Array<Route> = [
+  {
+    path: "/",
+    exact: true,
+    element: Home,
+  },
+  {
+    path: "/profile",
+    exact: true,
+    element: Profile,
+  },
+];
